@@ -14,7 +14,7 @@
         auth = {
           pam = {
             enabled = true;
-            module = "hyprlock";
+            module = "login";
           };
           fingerprint = {
             enabled = true;

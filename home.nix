@@ -13,12 +13,13 @@
     inputs.mainConfig.homeManagerModules
     ./hyprland.nix
     ./hyprlock.nix
+    ./podman.nix
   ];
 
   nixGL = {
     packages = nixGL.packages; # you must set this or everything will be a noop
-    defaultWrapper = "mesa"; # choose from nixGL options depending on GPU
-    # prime.card = "pci-0000_01_00_0";
+    defaultWrapper = "mesaPrime"; # choose from nixGL options depending on GPU
+    prime.card = "0x10de:0x25bc";
   };
 
   wayland.windowManager.hyprland = {
@@ -29,6 +30,7 @@
     shared.stylix = {
       enable = true;
       monospaceFont = "Monaspace Radon Var";
+      wallpaper = ./kanagawa.jpg;
     };
     home = {
       hypr = {
@@ -38,7 +40,7 @@
         cmdMod = "SUPER";
         hyprlock = false;
         hyprpaper = true;
-        hyprsunset = true;
+        hyprsunset = false;
       };
       catsvim.enable = true;
       vscode.enable = true;
@@ -57,7 +59,6 @@
   };
 
   stylix.polarity = "dark";
-  stylix.image = "./kanagawa.jpg";
 
   home.packages = [
     pkgs.nodePackages_latest.nodejs
@@ -76,11 +77,13 @@
     pkgs.uwsm
     pkgs.htop
     pkgs.adw-gtk3
-    pkgs.slack
-    pkgs.google-chrome
+    pkgs.figma-linux
   ];
 
-  services.polkit-gnome.enable = true;
+  services = {
+    polkit-gnome.enable = true;
+    hyprpolkitagent.enable = true;
+  };
 
   programs = {
     git.userName = "Jardar";

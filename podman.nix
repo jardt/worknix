@@ -7,5 +7,4 @@
   services.podman = {
     enable = true;
   };
-
 }

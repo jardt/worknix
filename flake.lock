@@ -621,10 +621,10 @@
         "textfox": "textfox"
       },
       "locked": {
-        "lastModified": 1757944678,
-        "narHash": "sha256-lC+B9/zgfgZtzVBqu90HVAa0W4Bu5oFMuCc6Lh/wNEQ=",
+        "lastModified": 1758032834,
+        "narHash": "sha256-QTd/ZT9HC84l+Y5IXtEF/DI6CFO4Bc1rdlcNTKGTnLc=",
         "ref": "master",
-        "rev": "d259e2b8de2d38d31eb77e250600a67c89c99390",
+        "rev": "89869ebbc0e1d826ecd1d370a912632aa6090c4d",
         "revCount": 155,
         "type": "git",
         "url": "ssh://git@github.com/jardt/nixconfig"
