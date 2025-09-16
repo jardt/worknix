@@ -57,6 +57,7 @@
   };
 
   stylix.polarity = "dark";
+  stylix.image = "./kanagawa.jpg";
 
   home.packages = [
     pkgs.nodePackages_latest.nodejs
