@@ -694,11 +694,11 @@
         "textfox": "textfox"
       },
       "locked": {
-        "lastModified": 1764104911,
-        "narHash": "sha256-kwE3tjAoIVA9yA6dtagXwDKg+pW+E0YLosG+/GwDHx8=",
+        "lastModified": 1764105333,
+        "narHash": "sha256-7PG4MNsCNt4/X2/8wQeyAUWzgsHAdvHYeKBdsInZVIE=",
         "ref": "master",
-        "rev": "0f45675a39cce4e22a6463d5f7977446d8feaf14",
-        "revCount": 237,
+        "rev": "8fe413c3fadd1da99397d7b5fb5b9a82b5c0c602",
+        "revCount": 238,
         "type": "git",
         "url": "ssh://git@github.com/jardt/nixconfig"
       },

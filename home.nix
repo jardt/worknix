@@ -2,7 +2,6 @@
   pkgs,
   config,
   inputs,
-  nixGL,
   lib,
   ...
 }:
@@ -43,7 +42,7 @@
     ];
 
   nixGL = {
-    packages = nixGL.packages; # you must set this or everything will be a noop
+    packages = inputs.nixGL.packages; # you must set this or everything will be a noop
     defaultWrapper = "mesaPrime"; # choose from nixGL options depending on GPU
     prime.card = "0x10de:0x25bc";
   };
@@ -85,7 +84,7 @@
       taskwarrior.enable = false;
       ghostty = {
         enable = true;
-        package = pkgs.ghostty;
+        package = config.lib.nixGL.wrap pkgs.ghostty;
         custom-shader = [ "shaders/cursor_smear_fade.glsl" ];
       };
       firefox = {
