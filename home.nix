@@ -32,7 +32,6 @@
       catsvim
       mango
       fsel
-      hyprland
       taskwarrior
       screenshot
       xdg
@@ -40,7 +39,6 @@
       stylix
     ]
     ++ [
-      ./hyprland.nix
       ./work.nix
     ];
 
@@ -70,15 +68,15 @@
           waybar &
         '';
       };
-      hypr = {
-        enable = true;
-        package = pkgs.hyprland;
-        launcher = "rofi -show drun";
-        cmdMod = "SUPER";
-        hyprlock = true;
-        hyprpaper = true;
-        hyprsunset = false;
-      };
+      # hypr = {
+      #   enable = true;
+      #   package = pkgs.hyprland;
+      #   launcher = "rofi -show drun";
+      #   cmdMod = "SUPER";
+      #   hyprlock = true;
+      #   hyprpaper = true;
+      #   hyprsunset = false;
+      # };
       catsvim = {
         enable = true;
         theme = "nord";
