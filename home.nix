@@ -121,7 +121,6 @@
     st
     uwsm
     adw-gtk3
-    cloudflare-warp
     dotnet-sdk_9
     powershell
     wl-clipboard
