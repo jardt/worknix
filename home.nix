@@ -41,6 +41,12 @@
       ./work.nix
     ];
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   nixGL = {
     packages = inputs.nixGL.packages; # you must set this or everything will be a noop
     defaultWrapper = "mesaPrime"; # choose from nixGL options depending on GPU
@@ -121,15 +127,7 @@
     st
     uwsm
     adw-gtk3
-    dotnet-sdk_9
-    powershell
     wl-clipboard
-    prusa-slicer
-    slack
-    figma-linux
-    keyd
-    spotify
-    google-chrome
     chromium
     inputs.nixCats.packages.${stdenv.hostPlatform.system}.cats_dotang_nvim
     nerd-fonts.monaspace
