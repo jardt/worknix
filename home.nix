@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  myvars,
   inputs,
   nixGL,
   lib,
@@ -11,7 +10,6 @@
   imports =
     with inputs.home-config.homeModules;
     [
-
       default
       devops
       media
@@ -39,6 +37,7 @@
       screenshot
       xdg
       waybar
+      stylix
     ]
     ++ [
       ./hyprland.nix
@@ -52,6 +51,12 @@
   };
 
   modules = {
+    shared.stylix = {
+      enable = true;
+      monospaceFont = "Monaspace Neon";
+      wallpaper = ./nord-mountain.png;
+      theme = "nord";
+    };
     home = {
       mango = {
         enable = true;
@@ -159,8 +164,8 @@
 
   lib.environment.enableAllTerminfo = true;
 
-  home.username = myvars.username;
-  home.homeDirectory = "/home/${myvars.username}";
+  home.username = "jdr";
+  home.homeDirectory = "/home/jdr";
 
   home.shellAliases = {
     hr = "home-manager switch --flake ~/worknix/";
