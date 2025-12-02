@@ -65,12 +65,14 @@
         enable = true;
         blur = true;
         terminal = "kitty";
+        mainmod = "SHIFT+SUPER";
         extraSettings = ''
           bind=CTRL+SHIFT+SUPER+ALT,w,spawn,kitty --title launcher -e bash -c work-dmenu
         '';
         extraAutoStart = ''
           wlr-randr --output eDP-1 --scale 1.4 &
           waybar &
+          kitty &
         '';
       };
       # hypr = {
@@ -130,7 +132,6 @@
     wl-clipboard
     chromium
     inputs.nixCats.packages.${stdenv.hostPlatform.system}.cats_dotang_nvim
-    inputs.mango.packages.${stdenv.hostPlatform.system}.default
     nerd-fonts.monaspace
     youtube-tui
   ];
