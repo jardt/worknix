@@ -11,6 +11,18 @@ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 
 sudo sh -c "echo 'experimental-features = nix-command flakes' >> ~/.config/"
 
+
+# wlroots
+sudo apt update
+sudo apt install build-essential git python3-pip
+sudo apt install libwayland-dev libxkbcommon-dev libdrm-dev libinput-dev \
+  libpixman-1-dev libgbm-dev libegl-dev libgles2-mesa-dev libglvnd-dev \
+  libliftoff-dev libdisplay-info-dev libseat-dev libsystemd-dev \
+  libxcb-composite0-dev libxcb-dri3-dev libxcb-ewmh-dev libxcb-icccm4-dev \
+  libxcb-image0-dev libxcb-present-dev libxcb-render-util0-dev \
+  libxcb-render0-dev libxcb-res0-dev libxcb-shm0-dev libxcb-xfixes0-dev \
+  libxcb-xinput-dev libxcb1-dev meson pkgconf wayland-protocols
+
 #in hm repo folder nix run home-manager/master -- init --switch
 
 # sudo apt install build-essential

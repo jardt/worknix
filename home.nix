@@ -130,6 +130,7 @@
     wl-clipboard
     chromium
     inputs.nixCats.packages.${stdenv.hostPlatform.system}.cats_dotang_nvim
+    inputs.mango.packages.${stdenv.hostPlatform.system}.default
     nerd-fonts.monaspace
     youtube-tui
   ];
