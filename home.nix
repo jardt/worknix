@@ -162,6 +162,9 @@
 
   home.username = "jdr";
   home.homeDirectory = "/home/jdr";
+  home.sessionVariables = {
+    XDG_CONFIG_DIRS = "/etc/xdg";
+  };
 
   home.shellAliases = {
     hr = "home-manager switch --flake ~/worknix/";
