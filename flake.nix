@@ -18,12 +18,8 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
-    nixGL = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:danth/stylix";
+    paneru = {
+      url = "github:karinushka/paneru";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -42,7 +38,7 @@
 
         flake = {
           homeConfigurations = {
-            jdr = withSystem "x86_64-linux" (
+            "jardar.ton" = withSystem "aarch64-darwin" (
               { system, ... }:
               inputs.home-manager.lib.homeManagerConfiguration {
                 extraSpecialArgs = { inherit inputs; };
@@ -53,7 +49,7 @@
           };
         };
         systems = [
-          "x86_64-linux"
+          "aarch64-darwin"
         ];
       }
     );
