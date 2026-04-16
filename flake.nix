@@ -15,13 +15,6 @@
       url = "github:jardt/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -36,13 +29,24 @@
           inputs.home-manager.flakeModules.home-manager
         ];
 
+        perSystem =
+          { system, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              config = {
+                allowUnfree = true;
+              };
+            };
+          };
+
         flake = {
           homeConfigurations = {
             "jardar.ton" = withSystem "aarch64-darwin" (
-              { system, ... }:
+              { system, pkgs, ... }:
               inputs.home-manager.lib.homeManagerConfiguration {
-                extraSpecialArgs = { inherit inputs; };
-                pkgs = inputs.nixpkgs.legacyPackages.${system};
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs system; };
                 modules = [ ./home.nix ];
               }
             );

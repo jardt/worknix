@@ -3,6 +3,7 @@
   config,
   inputs,
   lib,
+  system,
   ...
 }:
 {
@@ -88,7 +89,33 @@
     };
   };
 
-  programs.zsh.initExtra = lib.mkAfter ''
+  xdg.configFile."ghostty/config".text = ''
+    shell-integration = zsh
+
+    font-family = ${config.stylix.fonts.monospace.name}
+    font-feature = ss01
+    font-feature = ss02
+    font-feature = ss03
+    font-feature = ss04
+    font-feature = ss05
+    font-feature = ss06
+    font-feature = ss07
+    font-feature = ss09
+    font-thicken = true
+
+    copy-on-select = clipboard
+    background-opacity-cells = true
+    mouse-hide-while-typing = true
+    macos-titlebar-proxy-icon = hidden
+    macos-titlebar-style = hidden
+    title =
+    macos-non-native-fullscreen = true
+    window-decoration = true
+    background-opacity = 0.85
+    background-blur = true
+  '';
+
+  programs.zsh.initContent = lib.mkAfter ''
     export XDG_DATA_HOME=$HOME/.local/state/
   '';
 
