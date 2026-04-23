@@ -660,11 +660,11 @@
         "textfox": "textfox"
       },
       "locked": {
-        "lastModified": 1776369110,
-        "narHash": "sha256-+0+rK8nlbsxPQ+dp6+OY/kRp9ZNr6z5weejgUbhq0Nk=",
+        "lastModified": 1776851521,
+        "narHash": "sha256-/Y60xO4ZVxrLMMkuAUJ9hTCKWk85Qn6jZtWORzzC13M=",
         "ref": "master",
-        "rev": "0dbabb6b491f0f9be6fdf521197232e43d3d1eb2",
-        "revCount": 348,
+        "rev": "02393a6984a63d8be90d441b9ecca580a227f4d6",
+        "revCount": 352,
         "type": "git",
         "url": "ssh://git@github.com/jardt/nixconfig"
       },
@@ -1287,14 +1287,16 @@
         "plugins-blink-indent": "plugins-blink-indent_2",
         "plugins-nvim-ansible": "plugins-nvim-ansible_2",
         "plugins-nvim-lsp-endhints": "plugins-nvim-lsp-endhints_2",
-        "plugins-treesitter-textobjects": "plugins-treesitter-textobjects_2"
+        "plugins-sidekick": "plugins-sidekick",
+        "plugins-treesitter-textobjects": "plugins-treesitter-textobjects_2",
+        "plugins-ts-error-translator": "plugins-ts-error-translator"
       },
       "locked": {
-        "lastModified": 1776368643,
-        "narHash": "sha256-FBI8BoLGHMTXGZXkofbKgdEr0lEp9JCyzLCiCg7GoLs=",
+        "lastModified": 1776856093,
+        "narHash": "sha256-9GVp3BSz2IAddo82MLvw/EVPr++OeXjlnpcutkPbw5A=",
         "owner": "jardt",
         "repo": "neovim",
-        "rev": "6b1f762d18fd6fd3bdfc86f9249d2b397fe4ee07",
+        "rev": "07ddc076dce429fe9edfd4595014ef67d9c7dbc7",
         "type": "github"
       },
       "original": {
@@ -1765,6 +1767,22 @@
         "type": "github"
       }
     },
+    "plugins-sidekick": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774386786,
+        "narHash": "sha256-scCYymquGaT9/e7nU2kuyiwFutKfAq8pGQQsOWK+7rM=",
+        "owner": "folke",
+        "repo": "sidekick.nvim",
+        "rev": "17447a05f9385e5f8372b61530f6f9329cb82421",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "sidekick.nvim",
+        "type": "github"
+      }
+    },
     "plugins-treesitter-textobjects": {
       "flake": false,
       "locked": {
@@ -1796,6 +1814,22 @@
         "owner": "nvim-treesitter",
         "ref": "main",
         "repo": "nvim-treesitter-textobjects",
+        "type": "github"
+      }
+    },
+    "plugins-ts-error-translator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767484144,
+        "narHash": "sha256-kjZwfvb0B7GC4dBBSdgC/zRmCUCfCm4H5J+8SFzANJ4=",
+        "owner": "dmmulroy",
+        "repo": "ts-error-translator.nvim",
+        "rev": "558abff11b9e8f4cefc0de09df780c56841c7a4b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dmmulroy",
+        "repo": "ts-error-translator.nvim",
         "type": "github"
       }
     },

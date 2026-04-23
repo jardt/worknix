@@ -32,6 +32,7 @@
       ai
       aerospace
       firefox
+      bun
     ]
     ++ [
     ];
@@ -70,6 +71,7 @@
         enable = true;
         profile = "jdr";
       };
+      bun.enable = true;
     };
   };
 
@@ -86,6 +88,42 @@
   home = {
     shellAliases = {
       hr = "home-manager switch --flake ~/worknix/";
+    };
+
+    file.".local/scripts/stop-web" = {
+      executable = true;
+      text = ''
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        port=8010
+
+        if command -v docker >/dev/null 2>&1; then
+          containers="$(docker ps --filter "publish=$port" --format '{{.ID}} {{.Names}}')"
+          if [ -n "$containers" ]; then
+            while IFS= read -r container; do
+              [ -n "$container" ] || continue
+              id="''${container%% *}"
+              name="''${container#* }"
+              echo "Stopping Docker container $name ($id) exposing port $port"
+              docker stop "$id"
+            done <<EOF
+        $containers
+        EOF
+            exit 0
+          fi
+        fi
+
+        pids="$(lsof -nP -tiTCP:"$port" -sTCP:LISTEN || true)"
+
+        if [ -z "$pids" ]; then
+          echo "Nothing is listening on port $port"
+          exit 0
+        fi
+
+        echo "Killing process(es) listening on port $port: $(printf '%s ' $pids)"
+        printf '%s\n' "$pids" | xargs kill
+      '';
     };
   };
 
@@ -117,6 +155,7 @@
 
   programs.zsh.initContent = lib.mkAfter ''
     export XDG_DATA_HOME=$HOME/.local/state/
+    export PATH="/Users/jardar.ton/.bun/bin:$PATH"
   '';
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
