@@ -67,7 +67,7 @@
         enableDocker = true;
       };
       television.enable = true;
-      aerospace.enable = true;
+      aerospace.enable = false;
       firefox = {
         enable = true;
         profile = "jdr";

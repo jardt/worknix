@@ -30,7 +30,13 @@ This writes:
 
 ## Start services
 
-Start OmniWM once from Applications, then install/start skhd:
+Home Manager installs a user LaunchAgent that starts OmniWM at login:
+
+```text
+launchd.agents.omniwm
+```
+
+Install/start skhd separately:
 
 ```sh
 skhd --install-service
