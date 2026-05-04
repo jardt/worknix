@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -ne 1 ]; then
+  echo "usage: omni-move-column-to-workspace <workspace>" >&2
+  exit 64
+fi
+
+workspace="$1"
+
+/opt/homebrew/bin/omniwmctl command move-column-to-workspace "$workspace" >/dev/null
+/opt/homebrew/bin/omniwmctl command switch-workspace anywhere "$workspace" >/dev/null 2>&1 || \
+  /opt/homebrew/bin/omniwmctl command switch-workspace "$workspace" >/dev/null

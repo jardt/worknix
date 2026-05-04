@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -lt 3 ]; then
+  echo "usage: omni-focus-or-open <workspace> <bundle-id> <open-target...>" >&2
+  exit 64
+fi
+
+workspace="$1"
+bundle_id="$2"
+shift 2
+
+existing_workspace="$($HOME/.config/skhd/omni-find-window "$bundle_id" workspace)"
+
+if [ -n "$existing_workspace" ]; then
+  # Important goblin: do NOT use `omniwmctl window navigate` here.
+  # In Niri it recenters the target column, leaving dead space on the left.
+  # Switching to the workspace preserves the scrolling layout position.
+  /opt/homebrew/bin/omniwmctl command switch-workspace anywhere "$existing_workspace" >/dev/null 2>&1 || \
+    /opt/homebrew/bin/omniwmctl workspace focus-name "$existing_workspace" >/dev/null 2>&1 || \
+    /opt/homebrew/bin/omniwmctl command switch-workspace "$existing_workspace" >/dev/null 2>&1
+else
+  /opt/homebrew/bin/omniwmctl command switch-workspace anywhere "$workspace" >/dev/null 2>&1 || \
+    /opt/homebrew/bin/omniwmctl command switch-workspace "$workspace" >/dev/null 2>&1
+  /usr/bin/open "$@"
+fi

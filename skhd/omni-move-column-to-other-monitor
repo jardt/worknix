@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import json
+import subprocess
+import sys
+
+OMNI = "/opt/homebrew/bin/omniwmctl"
+
+def q(name):
+    return json.loads(subprocess.check_output([OMNI, "query", name, "--format", "json"], text=True))
+
+def run(*args):
+    subprocess.check_call([OMNI, *args], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+try:
+    displays = q("displays")["result"]["payload"]["displays"]
+except Exception as e:
+    print(f"failed to query displays: {e}", file=sys.stderr)
+    sys.exit(1)
+
+current = next((d for d in displays if d.get("isCurrent")), None)
+main = next((d for d in displays if d.get("isMain")), None)
+secondary = next((d for d in displays if not d.get("isMain")), None)
+
+if not current or not main or not secondary:
+    print("need at least one main and one secondary display", file=sys.stderr)
+    sys.exit(1)
+
+if current["id"] == main["id"]:
+    target_ws = secondary.get("activeWorkspace")
+else:
+    target_ws = main.get("activeWorkspace")
+
+if not target_ws:
+    print("target monitor has no active workspace; assign a workspace to secondary monitor", file=sys.stderr)
+    sys.exit(1)
+
+workspace = str(target_ws.get("rawName") or target_ws.get("number") or target_ws.get("displayName"))
+
+run("command", "move-column-to-workspace", workspace)
+run("workspace", "focus-name", workspace)

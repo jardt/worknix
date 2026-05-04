@@ -1,5 +1,7 @@
 # basic
 
+See also: [OmniWM + skhd setup](./README-omniwm-skhd.md)
+
 sudo adduser tempadmin
 
 sudo usermod -aG sudo tempadmin

@@ -1,0 +1,42 @@
+# skhd glue for OmniWM.
+# OmniWM owns the normal window-manager hotkeys in ~/.config/omniwm/settings.toml.
+# skhd only handles conditional app hotkeys: focus existing window, or switch workspace and open app.
+
+.shell "/bin/zsh"
+.path "/opt/homebrew/bin"
+
+.alias $wm ctrl + shift + alt
+
+# AeroSpace-style app bindings, now backed by OmniWM.
+# If the app already has a managed window: navigate to it.
+# If not: switch to the target workspace and open it.
+$wm - e : ~/.config/skhd/omni-focus-or-open 5 org.nixos.firefox -a Firefox
+$wm - o : ~/.config/skhd/omni-focus-or-open 8 com.microsoft.Outlook -a "Microsoft Outlook"
+$wm - n : ~/.config/skhd/omni-focus-or-open 1 md.obsidian -a Obsidian
+$wm - c : ~/.config/skhd/omni-focus-or-open 6 com.google.Chrome -a "Google Chrome"
+$wm - y : ~/.config/skhd/omni-focus-or-open 1 net.kovidgoyal.kitty -a kitty
+$wm - m : ~/.config/skhd/omni-focus-or-open 9 com.spotify.client -a Spotify
+$wm - t : ~/.config/skhd/omni-focus-or-open 9 com.microsoft.teams2 -a "Microsoft Teams"
+$wm - d : ~/.config/skhd/omni-focus-or-open 7 com.figma.Desktop -a Figma
+$wm - v : ~/.config/skhd/omni-focus-or-open 1 com.microsoft.VSCode -a "Visual Studio Code"
+$wm - space : ~/.config/skhd/omni-focus-or-open 4 com.mitchellh.ghostty -a Ghostty
+$wm - u : ~/.config/skhd/omni-focus-or-open 1 com.utmapp.UTM -a UTM
+
+# Slack had an AeroSpace rule but no launch hotkey in your old config.
+# Keep it commented until you pick a key, goblin avoids stealing random letters.
+# $wm - s : ~/.config/skhd/omni-focus-or-open 8 com.tinyspeck.slackmacgap -a Slack
+
+# Move current Niri column to workspace, then follow it.
+$wm + cmd - 1 : ~/.config/skhd/omni-move-column-to-workspace 1
+$wm + cmd - 2 : ~/.config/skhd/omni-move-column-to-workspace 2
+$wm + cmd - 3 : ~/.config/skhd/omni-move-column-to-workspace 3
+$wm + cmd - 4 : ~/.config/skhd/omni-move-column-to-workspace 4
+$wm + cmd - 5 : ~/.config/skhd/omni-move-column-to-workspace 5
+$wm + cmd - 6 : ~/.config/skhd/omni-move-column-to-workspace 6
+$wm + cmd - 7 : ~/.config/skhd/omni-move-column-to-workspace 7
+$wm + cmd - 8 : ~/.config/skhd/omni-move-column-to-workspace 8
+$wm + cmd - 9 : ~/.config/skhd/omni-move-column-to-workspace 9
+
+# Hyper+Tab: swap the current workspace with an adjacent monitor.
+# OmniWM has directional swaps only, so the helper tries right, then left/down/up.
+$wm + cmd - tab : ~/.config/skhd/omni-move-column-to-other-monitor
